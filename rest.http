@@ -1,0 +1,66 @@
+### Get current user
+GET http://127.0.0.1:8000/auth/users/me
+Authorization: JWT ...
+
+### Log IN 
+POST http://127.0.0.1:8000/auth/jwt/create
+Content-Type: application/json
+{
+    "username": "enoch",
+    "password": "1234"
+}
+
+### Refresh JWt access token
+POST http://127.0.0.1:8000/auth/jwt/refresh
+Content-Type: application/json
+{
+  "refresh": "..."
+}
+
+
+
+### create a new user
+POST http://127.0.0.1:8000/auth/users
+Content-Type: application/json
+{
+    "username": "daemon",
+    "email": "daemon@domain.com",
+    "password": "reminderuser",
+    "first_name": "Daemon",
+    "last_name": "Dexter"
+}
+
+
+### create a reminder
+POST http://127.0.0.1:8000/reminder/user_reminders/
+Authorization: JWT ...
+Content-Type: application/json
+{
+    "message": "Take a break",
+    "remind_at": "2025-12-09T02:18:00",
+    "frequency": "once"
+}
+
+###get reminders for a user
+GET http://127.0.0.1:8000/reminder/user_reminders/
+Authorization: JWT ...
+
+
+### get a specific reminder details
+GET http://127.0.0.1:8000/reminder/user_reminders/1/
+Authorization: JWT ...
+
+### update a specific reminder
+PUT http://127.0.0.1:8000/reminder/user_reminders/1/
+Authorization: JWT...
+Content-Type: application/json
+{
+    "message": "Take a break",
+    "remind_at": "2025-12-09T02:18:00",
+    "frequency": "once"
+}
+
+
+### delete a remidner
+DELETE http://127.0.0.1:8000/reminder/user_reminders/1/
+Authorization: JWT ...
